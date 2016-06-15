@@ -1,0 +1,89 @@
+.container_content {
+	font-family: 'Open Sans', sans-serif;
+	color: #696969;
+	margin: 20px;
+}
+
+p {
+	text-align: justify;
+}
+
+.header {
+	text-align: center;
+}
+
+#navbar {
+	margin-top: 30px;
+	padding: 0;
+	list-style-type: none;  /*убрал точку li*/
+	width: 250px;
+}
+
+#navbar a {
+	background-color: #949494;
+	color: #fff;
+	padding: 10px;
+	text-decoration: none; /*убираем подчеркивание текста*/
+	font-weight: bold;
+	border-left: 5px solid #33ADFF;
+	display: block;  /*Выравнивает ссылки в блок*/
+}
+
+#navbar li {
+	border-left: 10px solid #666;
+	border-bottom: 1px solid #666;
+}
+
+#navbar a:hover {  /*активность при наведении курсора*/
+	background-color: #666;
+	border-left: 5px solid #3333FF;
+}
+
+.form-group {
+	width: 30%;
+}
+
+.logaut {
+	float: right;
+}
+
+#navbar_top {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border: 2px solid #0066FF;
+	border-radius: 20px 5px;
+	background-color: #33ADFF;
+}
+
+#navbar_top a {
+	color: #fff;
+	padding: 5px 10px;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	display: inline-block;
+	width: 19.5%;
+}
+
+#navbar_top a:hover {
+	border-radius: 20px 5px;
+	background-color: #0066FF;
+}
+
+#navbar_top li {
+	display: inline;
+}
+
+.comment-preview {
+	border-bottom: 1px dashed #696;
+}
+
+.footer {
+	color: #777;
+	font-size: 12px;
+	padding-top: 10px;
+	text-align: center;
+	margin-top: 20px;
+	border-top: 1px solid #ccc;
+}
