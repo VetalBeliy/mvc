@@ -72,21 +72,33 @@ Class Controller_AddArticle Extends Controller_Base {
 	function edit_article() {
 
 		if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['status'] == '2') {
-			$id = $_GET['id'];
+			if (isset($_POST['add_post'])) {
+				if(!empty($_POST['title']) && !empty($_POST['text']) && !empty($_POST['meta'])) {
+					$title = $_POST['title'];
+					$content_text = $_POST['text'];
+					$meta = $_POST['meta'];
+					$category = $_POST['category'];
+					$id = $_POST['id'];
 
-			$select = array(
-							'where' => "id = $id",
-							);
-			$model = new Model_Content($select); // создаем объект модели
-			$content = $model->getAllRows(); // получаем статью
-			
-			$this->template->vars('content', $content);			
-			$this->template->view('index');
+					$select = array(
+									'where' => "id = $id",
+									);
+					$model = new Model_Content($select); // создаем объект модели
+					$model->fetchOne();
+					$model->title = $title;					
+					$model->content_text = $content_text;
+					$model->meta = $meta;
+					$model->category = $category;
+					$result = $model->update();
 
-			//$model = new Model_Content();
-			//$select = array('where' => "id = $id",);
-			//$content = $model->deleteBySelect($select); // получаем статью
-			//echo "<script>document.location.href='/admin';</script>\n";
+					echo "<script>alert('Статья отредактирована');</script>\n";
+					echo "<script>document.location.href='/admin';</script>\n";
+				} else {
+					echo "<script>alert('Статья не отредактирована!');</script>\n";
+					echo "<script>document.location.href='/addArticle';</script>\n";
+				}
+			}
+
 		} else {
 				echo "<script>document.location.href='/';</script>\n";
 			}

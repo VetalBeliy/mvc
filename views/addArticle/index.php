@@ -7,13 +7,17 @@
 			$content_text = $oneContent['content_text'];
 			$category = $oneContent['category'];
 			$meta = $oneContent['meta'];
+			$id = $oneContent['id'];
 		}
 	}
 ?>
 
 	<header><h3>Добавить статью</h3></header>
 		<div class="module_content">
-		<form action="addArticle/save_article" method="post">
+		<form action="<?php if (isset($content)) {
+				echo 'addArticle/edit_article';
+			} else { echo 'addArticle/save_article'; } ?>" method="post">
+				<input type="hidden" name="id" value="<?php echo $id ?>">
 				<fieldset>
 					<label>Заголовок</label>
 					<input name="title" type="text" value="<?php if (isset($title)) {
@@ -27,7 +31,7 @@
 					CKEDITOR.replace('text');
 					</script>
 				</fieldset>
-				<fieldset style="width:48%; float:left; margin-right: 3%;"> <!-- to make two field float next to one another, adjust values accordingly -->
+				<fieldset style="width:48%; float:left; margin-right: 3%;">
 					<label>Категория</label>
 					<select name="category" style="width:92%;">
 						<?php if(isset($category)): ?>
@@ -39,7 +43,7 @@
 						<option value="3">Новости</option>
 					</select>
 				</fieldset>
-				<fieldset style="width:48%; float:left;"> <!-- to make two field float next to one another, adjust values accordingly -->
+				<fieldset style="width:48%; float:left;">
 					<label>Тэги</label>
 					<input name="meta" type="text" value="<?php if (isset($meta)) {
 						echo $meta; } ?>" style="width:92%;">
